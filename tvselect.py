@@ -11,18 +11,21 @@ import subprocess
 HERE = pathlib.Path(__file__).parent
 
 
-def rofi(items, theme="Indego"):
+def rofi(items):
     stdin = io.StringIO()
     for item in items:
         print(item, file=stdin)
 
-    result = subprocess.run(
-        ["rofi", "-dmenu", "-theme", theme, "-format", "i"],
-        input=stdin.getvalue(),
-        stdout=subprocess.PIPE,
-        check=True,
-        encoding="utf-8",
-    )
+    try:
+        result = subprocess.run(
+            ["rofi", "-dmenu", "-format", "i"],
+            input=stdin.getvalue(),
+            stdout=subprocess.PIPE,
+            check=True,
+            encoding="utf-8",
+        )
+    except subprocess.CalledProcessError:
+        return Back(1)
 
     result_i = int(result.stdout)
     return items[result_i]

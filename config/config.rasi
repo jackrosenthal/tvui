@@ -1,0 +1,5 @@
+configuration {
+  font: "Iosevka 24"
+  kb-cancel: "XF86Back,XF86HomePage"
+}
+@theme "Indego"
