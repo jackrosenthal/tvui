@@ -10,3 +10,5 @@ bindsym XF86Back kill
 bar {
     mode invisible
 }
+
+exec --no-startup-id ~/tvui/tvselect.py
