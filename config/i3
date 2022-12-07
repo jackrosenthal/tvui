@@ -6,6 +6,7 @@ bindsym XF86HomePage exec --no-startup-id ~/tvui/tvselect.py
 bindsym XF86WWW exec --no-startup-id google-chrome-stable
 bindsym Menu exec --no-startup-id rofi -show window
 bindsym XF86Back kill
+bindsym XF86Mail fullscreen
 
 bar {
     mode invisible
