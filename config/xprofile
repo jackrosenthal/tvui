@@ -1,4 +1,5 @@
 #!/bin/sh
 xrandr --dpi 300
 xrdb -merge ~/tvui/config/Xresources
+xset s off -dpms
 feh --bg-fill ~/tvui/wallpaper.jpg
