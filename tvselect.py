@@ -27,8 +27,15 @@ def rofi(items):
     except subprocess.CalledProcessError:
         return Back(1)
 
-    result_i = int(result.stdout)
-    return items[result_i]
+    try:
+        result_i = int(result.stdout)
+    except ValueError:
+        return Back(1)
+
+    try:
+        return items[result_i]
+    except IndexError:
+        return Back(1)
 
 
 @dataclasses.dataclass
