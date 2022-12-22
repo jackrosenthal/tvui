@@ -111,6 +111,7 @@ GAMES = [
     MenuItemExec("SuperTux", ["supertux"]),
     MenuItemExec("Pingus", ["pingus"]),
     MenuItemExec("PySol", ["pysol"]),
+    MenuItemExec("RetroArch", ["retroarch"]),
 ]
 
 SYSTEM = [
