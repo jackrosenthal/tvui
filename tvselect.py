@@ -108,7 +108,7 @@ GAMES = [
     MenuItemExec("GameHub", ["gamehub"]),
     MenuItemExec("Steam", ["steam", "-steamdeck", "-gamepadui"]),
     MenuItemExec("SuperTuxKart", ["supertuxkart"]),
-    MenuItemExec("SuperTux", ["supertux"]),
+    MenuItemExec("SuperTux", ["supertux2"]),
     MenuItemExec("Pingus", ["pingus"]),
     MenuItemExec("PySol", ["pysol"]),
     MenuItemExec("RetroArch", ["retroarch"]),
