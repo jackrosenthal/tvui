@@ -105,6 +105,7 @@ def show_menu(items):
 
 
 GAMES = [
+    MenuItemExec("EmulationStation", ["emulationstation"]),
     MenuItemExec("GameHub", ["gamehub"]),
     MenuItemExec("Steam", ["steam", "-steamdeck", "-gamepadui"]),
     MenuItemExec("SuperTuxKart", ["supertuxkart"]),
@@ -112,6 +113,10 @@ GAMES = [
     MenuItemExec("Pingus", ["pingus"]),
     MenuItemExec("PySol", ["pysol"]),
     MenuItemExec("RetroArch", ["retroarch"]),
+]
+
+MEDIA = [
+    MenuItemExec("Kodi", ["kodi"]),
 ]
 
 SYSTEM = [
@@ -128,6 +133,7 @@ SYSTEM = [
 TOP = [
     MenuItemExec("Google Chrome", ["google-chrome-stable"]),
     MenuItemSub("Games", GAMES),
+    MenuItemSub("Media", MEDIA),
     MenuItemSub("System", SYSTEM),
 ]
 
