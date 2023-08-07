@@ -68,8 +68,9 @@ class Media:
                 break
             if _EPISODE_RE.search(part):
                 break
-            if len(part) == len(part.encode()):
-                # It's ASCII.
+            # Strip out non-ASCII.
+            part = "".join(x for x in part if len(part.encode()) == 1)
+            if any(x in (string.ascii_letters + string.digits) for x in part):
                 title_parts.append(part)
         if self.collection == "Shows":
             self.series = " ".join(title_parts)
@@ -190,19 +191,19 @@ def main(library, import_dir):
         media.collection = pt.prompt(
             "Media collection: ",
             default=media.collection or "Movies",
-        )
+        ).strip()
         if media.collection == "Movies":
-            media.title = pt.prompt("Title: ", default=media.title or "")
+            media.title = pt.prompt("Title: ", default=media.title or "").strip()
         else:
-            media.series = pt.prompt("Series: ", default=media.series or "")
-            media.season = pt.prompt("Season: ", default=media.season or "01")
-            media.episode = pt.prompt("Episode: ", default=media.episode or "S01E01")
+            media.series = pt.prompt("Series: ", default=media.series or "").strip()
+            media.season = pt.prompt("Season: ", default=media.season or "01").strip()
+            media.episode = pt.prompt("Episode: ", default=media.episode or "S01E01").strip()
         media.year = int(pt.prompt("Year: ", default=str(media.year or "")))
         if not media.has_embedded_subtitles:
             candidates = [str(x) for x in media.find_srt_candidates()]
             completer = WordCompleter(candidates)
             srt_file = pt.prompt(
-                "SRT File:",
+                "SRT File: ",
                 default=candidates[0] if candidates else "",
                 completer=completer
             )
