@@ -1,5 +1,5 @@
 configuration {
-  font: "Iosevka 24";
+  font: "Roboto 24";
   kb-cancel: "XF86Back,XF86HomePage";
 }
-@theme "Indego"
+@theme "rounded-blue-dark.rasi"
