@@ -110,7 +110,7 @@ class Media:
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(self.path, dest)
         if self.srt_path:
-            shutil.copyfile(self.srt_path, self.srt_dest_path)
+            shutil.copyfile(self.srt_path, library_path / self.srt_dest_path)
 
 
 _MB = 1024 * 1024
