@@ -70,7 +70,7 @@ class Media:
             if _EPISODE_RE.search(part):
                 break
             # Strip out non-ASCII.
-            part = "".join(x for x in part if len(part.encode()) == 1)
+            part = "".join(x for x in part if len(x.encode()) == 1)
             if any(x in (string.ascii_letters + string.digits) for x in part):
                 title_parts.append(part)
         if self.collection == "Shows":
