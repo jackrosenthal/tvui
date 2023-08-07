@@ -1,9 +1,0 @@
-@theme "rounded-blue-dark.rasi"
-
-* {
-  font: "Roboto 48";
-}
-
-configuration {
-  kb-cancel: "XF86Back,XF86HomePage";
-}
