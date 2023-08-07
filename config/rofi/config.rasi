@@ -1,6 +1,5 @@
 @theme "rounded-blue-dark.rasi"
 
 configuration {
-  font: "Roboto 48";
   kb-cancel: "XF86Back,XF86HomePage";
 }
