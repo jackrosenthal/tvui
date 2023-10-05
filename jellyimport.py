@@ -78,6 +78,18 @@ class Media:
         else:
             self.title = " ".join(title_parts)
 
+    def match_existing_show(self, existing_shows):
+        show_re = re.compile("(.*)\s+\(\d+\)")
+        for show in existing_shows:
+            m = show_re.fullmatch(show)
+            if m:
+                title = m.group(1)
+                year = int(m.group(2))
+                if title.lower() == self.title.lower():
+                    self.title = title
+                    self.year = year
+                    return
+
     def check_has_embedded_subtitles(self):
         if self.path.suffix != ".mkv":
             return
@@ -151,12 +163,14 @@ def _hash_dir(path, label, suffixes=(".mkv", ".mp4")):
     return result
 
 
-def _get_medias(import_hashes):
+def _get_medias(import_hashes, existing_shows):
     medias = []
     with pt.ProgressBar(title="Populating initial metadata...") as pb:
         for path in pb(import_hashes.values()):
             media = Media(path)
             media.populate_from_file_name()
+            if media.collection == "Shows":
+                media.match_existing_show(existing_shows)
             medias.append(media)
     with pt.ProgressBar(title="Checking for embedded subtitles...") as pb:
         for media in pb(medias):
@@ -174,6 +188,7 @@ def main(library, import_dir):
         click.echo("No files to import.")
         return 0
     library_hashes = _hash_dir(library, "library")
+    existing_shows = list((library / "Shows").glob("*/"))
     for dup in set(library_hashes) & set(import_hashes):
         click.echo(
             f"Skip {import_hashes[dup]}, as it's already in the library at "
@@ -184,7 +199,7 @@ def main(library, import_dir):
         click.echo("No files to import.")
         return 0
     click.echo(f"{len(import_hashes)} files to import.")
-    medias = _get_medias(import_hashes)
+    medias = _get_medias(import_hashes, existing_shows)
     medias_to_import = []
     for media in medias:
         if not pt.confirm(f"Import {media.path}?"):
