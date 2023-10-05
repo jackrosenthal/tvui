@@ -81,7 +81,7 @@ class Media:
     def match_existing_show(self, existing_shows):
         show_re = re.compile("(.*)\s+\(\d+\)")
         for show in existing_shows:
-            m = show_re.fullmatch(show)
+            m = show_re.fullmatch(show.name)
             if m:
                 title = m.group(1)
                 year = int(m.group(2))
