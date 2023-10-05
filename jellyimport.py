@@ -83,10 +83,10 @@ class Media:
         for show in existing_shows:
             m = show_re.fullmatch(show.name)
             if m:
-                title = m.group(1)
+                series = m.group(1)
                 year = int(m.group(2))
-                if title.lower() == self.title.lower():
-                    self.title = title
+                if series.lower() == self.series.lower():
+                    self.series = series
                     self.year = year
                     return
 
