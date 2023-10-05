@@ -12,7 +12,7 @@ import prompt_toolkit.shortcuts as pt
 from prompt_toolkit.completion import WordCompleter
 
 
-_EPISODE_RE = re.compile(r"S(\d\d)E\d\d")
+_EPISODE_RE = re.compile(r"[Ss](\d\d)[Ee]\d\d")
 _YEAR_RE = re.compile(r"(?:19\d\d|20[012]\d)")
 
 
