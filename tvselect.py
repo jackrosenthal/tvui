@@ -117,6 +117,8 @@ GAMES = [
 
 MEDIA = [
     MenuItemExec("Kodi", ["kodi"]),
+    MenuItemExec("Jellyfin Desktop", ["jellyfinmediaplayer"]),
+    MenuItemExec("Jellyfin MPV Shim", ["jellyfin-mpv-shim"]),
 ]
 
 SYSTEM = [
