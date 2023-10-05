@@ -79,7 +79,7 @@ class Media:
             self.title = " ".join(title_parts)
 
     def match_existing_show(self, existing_shows):
-        show_re = re.compile("(.*)\s+\(\d+\)")
+        show_re = re.compile("(.*)\s+\((\d+)\)")
         for show in existing_shows:
             m = show_re.fullmatch(show.name)
             if m:
