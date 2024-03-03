@@ -3,6 +3,7 @@ hide_edge_borders both
 default_border none
 
 bindsym XF86HomePage exec --no-startup-id ~/tvui/tvselect.py
+bindsym Home exec --no-startup-id ~/tvui/tvselect.py
 bindsym XF86WWW exec --no-startup-id google-chrome-stable
 bindsym Menu exec --no-startup-id rofi -show window
 bindsym XF86Back kill
