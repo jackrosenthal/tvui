@@ -143,7 +143,7 @@ def _fast_hash_file(path):
     return hasher.hexdigest()
 
 
-def _hash_dir(path, label, suffixes=(".mkv", ".mp4")):
+def _hash_dir(path, label, suffixes=(".avi", ".m4v", ".mkv", ".mp4")):
     result = {}
     files = []
     with pt.ProgressBar(title=f"Enumerating {label}...") as pb:
